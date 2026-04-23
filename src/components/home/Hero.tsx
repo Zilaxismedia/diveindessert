@@ -7,11 +7,11 @@ interface HeroProps {
 
 const FloatingIcon = ({ icon: Icon, delay, initialX, initialY }: any) => (
    <motion.div
-      initial={{ x: initialX, y: initialY, opacity: 0 }}
+      initial={{ opacity: 0 }}
       animate={{
-         y: [initialY, initialY - 40, initialY],
-         x: [initialX, initialX + 20, initialX],
-         opacity: [0.1, 0.2, 0.1],
+         y: [0, -40, 0],
+         x: [0, 20, 0],
+         opacity: [0.3, 0.6, 0.3],
          rotate: [0, 10, -10, 0]
       }}
       transition={{
@@ -20,9 +20,10 @@ const FloatingIcon = ({ icon: Icon, delay, initialX, initialY }: any) => (
          delay: delay,
          ease: "easeInOut"
       }}
-      className="absolute text-primary pointer-events-none z-0"
+      style={{ left: initialX, top: initialY }}
+      className="absolute text-primary-dark pointer-events-none z-0"
    >
-      <Icon size={32} strokeWidth={1} />
+      <Icon size={40} strokeWidth={0.75} />
    </motion.div>
 );
 
