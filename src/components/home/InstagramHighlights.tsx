@@ -1,37 +1,37 @@
 import { motion } from 'motion/react';
 import { Instagram, Star, Heart } from 'lucide-react';
+import { INSTAGRAM_HANDLE } from '../../data/constants';
 
 const HIGHLIGHTS = [
-    { id: 1, title: 'Reviews', img: '/Basque cheesecake.png' },
-    { id: 2, title: 'Unboxing', img: '/Matilda Bento Cake.png' },
-    { id: 3, title: 'Happy Customers', img: '/Lotus Biscoff cheese cake.png' },
-    { id: 4, title: 'Feedbacks', img: '/Chco Lava skillet.png' },
-    { id: 5, title: 'Gifts', img: '/Dark Chocolate Skillet.png' },
+    { id: 1, title: 'Reviews', img: '/Brownie.png' },
+    { id: 2, title: 'Unboxing', img: '/cupcake box.png' },
+    { id: 3, title: 'Cheesecakes', img: '/Bento Nutella and hazelnut cheesecake.png' },
+    { id: 4, title: 'Treat Boxes', img: '/cookie tin cake.png' },
+    { id: 5, title: 'Gifts', img: '/diwali hamper.png' },
 ];
 
 const STORY_SCREENSHOTS = [
-    { id: 1, img: '/Raw choclatecale.png', text: "Best chocolate cake I've ever had! 🎂", user: "@sarah_j" },
-    { id: 2, img: '/Red velvet skillet.png', text: "The red velvet is heavenly. So soft and moist!", user: "@emily_cakes" },
-    { id: 3, img: '/Chocolate Brownie Slab.png', text: "Perfect for our party. Everyone loved it!", user: "@foodie_hyd" },
+    { id: 1, img: '/hero.png', text: "The chocolate cake looked gorgeous and tasted even better.", user: "@sarah_j" },
+    { id: 2, img: '/donuts.png', text: "These donuts were soft, fresh, and disappeared so fast at home.", user: "@emily_cakes" },
+    { id: 3, img: '/Ferrero Brownie tub.png', text: "The brownie tub was a hit for gifting and the flavor was so rich.", user: "@foodie_hyd" },
 ];
 
 export function InstagramHighlights() {
-    const highlightUrl = "https://www.instagram.com/stories/highlights/18072326188974972/";
+    const highlightUrl = "https://www.instagram.com/stories/highlights/17968651328701259/";
 
     return (
         <section className="py-24 bg-[#F9F8F6] px-6 lg:px-12">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl lg:text-5xl mb-4 text-espresso">Happy Crumbs</h2>
+                    <h2 className="text-4xl lg:text-5xl mb-4 text-espresso">Happy Customers</h2>
                     <p className="text-cocoa/70 flex items-center justify-center gap-2">
                         <Instagram size={16} /> Tap into our Instagram Highlights to see the love
                     </p>
                 </div>
 
-                {/* Highlights Row */}
                 <div className="flex overflow-x-auto scrollbar-hide gap-8 pb-12 mb-12 justify-center lg:justify-center">
                     {HIGHLIGHTS.map((item) => (
-                        <a 
+                        <a
                             key={item.id}
                             href={highlightUrl}
                             target="_blank"
@@ -48,10 +48,9 @@ export function InstagramHighlights() {
                     ))}
                 </div>
 
-                {/* Story-styled Review Grid */}
                 <div className="grid md:grid-cols-3 gap-8">
                     {STORY_SCREENSHOTS.map((story) => (
-                        <motion.div 
+                        <motion.div
                             key={story.id}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -60,8 +59,7 @@ export function InstagramHighlights() {
                         >
                             <img src={story.img} alt="Review Story" className="w-full h-full object-cover" />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
-                            
-                            {/* Instagram UI Overlays */}
+
                             <div className="absolute top-6 left-6 flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full border border-white p-[1px]">
                                     <img src={story.img} className="w-full h-full rounded-full object-cover" alt="User" />
@@ -75,7 +73,7 @@ export function InstagramHighlights() {
                                 </div>
                                 <p className="text-white text-sm font-medium leading-relaxed mb-3">"{story.text}"</p>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Mini Crumbs Review</span>
+                                    <span className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Dive In Dessert Review</span>
                                     <Heart size={14} className="text-white fill-white animate-pulse" />
                                 </div>
                             </div>
@@ -84,7 +82,7 @@ export function InstagramHighlights() {
                 </div>
 
                 <div className="mt-16 text-center">
-                    <a 
+                    <a
                         href={highlightUrl}
                         target="_blank"
                         rel="noreferrer"

@@ -23,7 +23,7 @@ export function CustomCakeModal() {
 
    const handleCustomSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      let text = `Hi Mini Crumbs, I'd like a quote for a Custom Cake:%0A%0A`;
+      let text = `Hi Dive In Dessert, I'd like a quote for a Custom Cake:%0A%0A`;
       text += `*Details:*%0A`;
       text += `*Size:* ${customForm.weight}%0A`;
       text += `*Message on Cake:* ${customForm.cakeMessage}%0A`;

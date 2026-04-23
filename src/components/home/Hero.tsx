@@ -26,8 +26,8 @@ export function Hero({ onOrder }: HeroProps) {
                     {/* Main Image */}
                     <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-4 ring-cream bg-cream-dark z-10">
                        <img
-                          src="/Raw choclatecale.png"
-                          alt="Hero Cake"
+                          src="/hero.png"
+                          alt="Signature chocolate cake"
                           className="w-full h-full object-cover"
                        />
                     </div>
@@ -39,7 +39,7 @@ export function Hero({ onOrder }: HeroProps) {
                        </div>
                        <div>
                           <p className="text-[10px] font-semibold text-cocoa uppercase tracking-wider mb-0.5">Order Now</p>
-                          <p className="text-sm font-medium text-espresso">Raw Chocolate Cake</p>
+                          <p className="text-sm font-medium text-espresso">Signature Chocolate Cake</p>
                        </div>
                     </div>
                  </div>
@@ -56,7 +56,7 @@ export function Hero({ onOrder }: HeroProps) {
                     <span className="italic text-cocoa">Made to Order</span>
                  </h1>
                  <p className="text-base lg:text-lg text-cocoa/80 mb-8 lg:mb-10 leading-relaxed font-light px-2 lg:px-0">
-                    Experience the warmth of a handcrafted cloud bakery. From gooey skillet cakes to dense fudgy brownies, sweet treats made fresh just for you.
+                    Explore handcrafted cakes, brownies, cheesecakes, cupcakes, and festive dessert boxes made fresh for every celebration.
                  </p>
                  <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                     <button
@@ -110,8 +110,8 @@ export function Hero({ onOrder }: HeroProps) {
                     {/* Main Image */}
                     <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-8 ring-cream bg-cream-dark z-10">
                        <img
-                          src="/Raw choclatecale.png"
-                          alt="Hero Cake"
+                          src="/hero.png"
+                          alt="Signature chocolate cake"
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                        />
                     </div>
@@ -123,7 +123,7 @@ export function Hero({ onOrder }: HeroProps) {
                        </div>
                        <div>
                           <p className="text-xs font-semibold text-cocoa uppercase tracking-wider mb-0.5">Order Now</p>
-                          <p className="text-sm font-medium text-espresso">Raw Chocolate Cake</p>
+                          <p className="text-sm font-medium text-espresso">Signature Chocolate Cake</p>
                        </div>
                     </div>
                  </div>

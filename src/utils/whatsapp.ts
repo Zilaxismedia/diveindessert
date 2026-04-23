@@ -2,7 +2,7 @@ import { CartItem, CheckoutFormData } from '../types';
 import { PHONE_NUMBER } from '../data/constants';
 
 export function createWaLink(cart: CartItem[] = [], form?: CheckoutFormData) {
-   let text = `*New Order from Mini Crumbs Website*\n`;
+   let text = `*New Order from Dive In Dessert Website*\n`;
    text += `--------------------------\n\n`;
    
    if (cart.length > 0) {
@@ -53,4 +53,3 @@ export function createWaLink(cart: CartItem[] = [], form?: CheckoutFormData) {
    
    return `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
 }
-

@@ -3,12 +3,12 @@ import { Play, Instagram, ExternalLink } from 'lucide-react';
 import { INSTAGRAM_HANDLE } from '../../data/constants';
 
 const REELS = [
-    { id: 1, img: '/Chco Lava skillet.png', likes: '1.2k' },
-    { id: 2, img: '/Dark Chocolate Skillet.png', likes: '845' },
-    { id: 3, img: '/Lotus Biscoff cheese cake.png', likes: '2.1k' },
-    { id: 4, img: '/Matilda Bento Cake.png', likes: '1.5k' },
-    { id: 5, img: '/Raw choclatecale.png', likes: '3.2k' },
-    { id: 6, img: '/Basque cheesecake.png', likes: '920' },
+    { id: 1, img: '/hero.png', likes: '1.2k' },
+    { id: 2, img: '/bento cake.png', likes: '845' },
+    { id: 3, img: '/brownie slab.png', likes: '2.1k' },
+    { id: 4, img: '/Bento Nutella and hazelnut cheesecake.png', likes: '1.5k' },
+    { id: 5, img: '/cupcake box.png', likes: '3.2k' },
+    { id: 6, img: '/donuts.png', likes: '920' },
 ];
 
 export function InstagramReels() {
