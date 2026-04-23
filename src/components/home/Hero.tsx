@@ -1,134 +1,150 @@
 import { motion } from 'motion/react';
-import { Utensils, ArrowRight, Star } from 'lucide-react';
+import { Utensils, ArrowRight, Cake, Cookie, Coffee, Croissant, Donut, ShoppingBag } from 'lucide-react';
 
 interface HeroProps {
    onOrder: () => void;
 }
 
+const FloatingIcon = ({ icon: Icon, delay, initialX, initialY }: any) => (
+   <motion.div
+      initial={{ x: initialX, y: initialY, opacity: 0 }}
+      animate={{
+         y: [initialY, initialY - 40, initialY],
+         x: [initialX, initialX + 20, initialX],
+         opacity: [0.1, 0.2, 0.1],
+         rotate: [0, 10, -10, 0]
+      }}
+      transition={{
+         duration: 8 + Math.random() * 5,
+         repeat: Infinity,
+         delay: delay,
+         ease: "easeInOut"
+      }}
+      className="absolute text-primary pointer-events-none z-0"
+   >
+      <Icon size={32} strokeWidth={1} />
+   </motion.div>
+);
+
 export function Hero({ onOrder }: HeroProps) {
-    return (
-        <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-32 px-0 lg:px-12 max-w-7xl mx-auto">
-           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10 w-full overflow-hidden lg:overflow-visible">
+   const backgroundIcons = [
+      { icon: Cake, initialX: '10%', initialY: '20%', delay: 0 },
+      { icon: Cookie, initialX: '80%', initialY: '15%', delay: 1 },
+      { icon: Donut, initialX: '15%', initialY: '70%', delay: 2 },
+      { icon: Croissant, initialX: '85%', initialY: '60%', delay: 3 },
+      { icon: Coffee, initialX: '50%', initialY: '10%', delay: 4 },
+      { icon: Cake, initialX: '40%', initialY: '80%', delay: 5 },
+      { icon: Cookie, initialX: '70%', initialY: '85%', delay: 0.5 },
+   ];
 
-              {/* Mobile Image - Circular with animated rings */}
-              <motion.div
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 className="w-full relative lg:hidden flex justify-center items-center py-12 order-1 shrink-0"
-              >
-                 <div className="relative w-[85vw] h-[85vw] max-w-[400px] max-h-[400px] flex justify-center items-center">
-                    {/* Animated Rings Container */}
-                    <div className="absolute inset-[-1.5rem] rounded-full border-2 border-dashed border-gold/50 animate-[spin_20s_linear_infinite]" />
-                    <div className="absolute inset-[-1rem] rounded-full border-[3px] border-t-cocoa/40 border-r-cocoa/40 border-b-transparent border-l-transparent animate-[spin_15s_linear_infinite_reverse]" />
-                    <div className="absolute inset-[-0.5rem] rounded-full border-[3px] border-b-blush border-l-blush border-t-transparent border-r-transparent animate-[spin_12s_linear_infinite]" />
-                    <div className="absolute inset-[-2rem] rounded-full border-2 border-r-espresso/20 border-t-transparent border-b-transparent border-l-transparent animate-[spin_25s_linear_infinite]" />
+   return (
+      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-32 px-6 lg:px-12 max-w-7xl mx-auto overflow-hidden">
+         {/* Background Floating Icons */}
+         {backgroundIcons.map((item, index) => (
+            <FloatingIcon key={index} {...item} />
+         ))}
 
-                    {/* Main Image */}
-                    <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-4 ring-cream bg-cream-dark z-10">
-                       <img
-                          src="/hero.png"
-                          alt="Signature chocolate cake"
-                          className="w-full h-full object-cover"
-                       />
-                    </div>
+         <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+               initial={{ opacity: 0, x: -30 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.8, ease: "easeOut" }}
+               className="flex-1 text-center lg:text-left relative"
+            >
+               <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-block bg-secondary px-4 py-1.5 rounded-xl mb-6 shadow-sm"
+               >
+                  <span className="text-[11px] font-bold text-neutral uppercase tracking-widest">Freshly Baked Daily</span>
+               </motion.div>
 
-                    {/* Floating badge */}
-                    <div className="absolute -bottom-4 right-0 bg-white/95 backdrop-blur px-4 py-2 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce z-20" style={{ animationDuration: '3s' }}>
-                       <div className="bg-blush w-8 h-8 rounded-full flex items-center justify-center text-cocoa">
-                          <Utensils size={14} />
-                       </div>
-                       <div>
-                          <p className="text-[10px] font-semibold text-cocoa uppercase tracking-wider mb-0.5">Order Now</p>
-                          <p className="text-sm font-medium text-espresso">Signature Chocolate Cake</p>
-                       </div>
-                    </div>
-                 </div>
-              </motion.div>
+               <h1 className="text-5xl sm:text-6xl lg:text-8xl leading-[1.05] mb-6 text-neutral relative z-10">
+                  Dive Into A <br />
+                  World of <span className="italic text-accent-gold font-serif">Pure <br className="hidden sm:block lg:hidden" /> Bliss.</span>
+               </h1>
 
-              <motion.div
-                 initial={{ opacity: 0, y: 20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.8, ease: "easeOut" }}
-                 className="max-w-xl px-6 lg:px-0 text-center lg:text-left mt-6 lg:mt-0 order-2 lg:order-1 relative z-20"
-              >
-                 <h1 className="text-4xl sm:text-5xl lg:text-7xl leading-[1.15] mb-4 lg:mb-6 text-balance text-espresso">
-                    Freshly Baked, <br />
-                    <span className="italic text-cocoa">Made to Order</span>
-                 </h1>
-                 <p className="text-base lg:text-lg text-cocoa/80 mb-8 lg:mb-10 leading-relaxed font-light px-2 lg:px-0">
-                    Explore handcrafted cakes, brownies, cheesecakes, cupcakes, and festive dessert boxes made fresh for every celebration.
-                 </p>
-                 <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
-                    <button
-                       onClick={onOrder}
-                       className="w-full sm:w-auto bg-cocoa text-cream px-8 py-4 rounded-full text-base font-medium hover:bg-espresso transition-all shadow-md shadow-cocoa/20 flex items-center justify-center gap-2 group"
-                    >
-                       Order Now
-                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <button
-                       onClick={() => {
-                          document.dispatchEvent(new CustomEvent('openCustomModal'));
-                       }}
-                       className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-medium text-cocoa border border-cocoa/20 hover:bg-cocoa/5 transition-colors flex items-center justify-center gap-2 group"
-                    >
-                       Custom Cake Quote
-                    </button>
-                 </div>
+               <p className="text-lg lg:text-xl text-neutral/70 mb-10 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+                  Meticulously crafted sweets for the modern hedonist. We don't just bake; we create edible moments of joy that look as good as they taste.
+               </p>
 
-                 <div className="mt-10 flex-col items-center lg:items-start gap-4 text-sm text-cocoa/70 font-medium hidden sm:flex sm:flex-row justify-center">
-                    <div className="flex -space-x-2">
-                       {[1, 2, 3, 4].map(i => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-cream bg-cream-dark flex items-center justify-center overflow-hidden">
-                             <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Customer" className="w-full h-full object-cover" />
-                          </div>
-                       ))}
-                    </div>
-                    <div>
-                       <div className="flex items-center text-gold mb-0.5 justify-center lg:justify-start">
-                          {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} fill="currentColor" />)}
-                       </div>
-                       <span>Loved by our Instagram community</span>
-                    </div>
-                 </div>
-              </motion.div>
+               <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
+                  <button
+                     onClick={onOrder}
+                     className="w-full sm:w-auto bg-primary text-white px-10 py-4.5 rounded-full text-base font-semibold hover:scale-105 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group"
+                  >
+                     Browse The Menu
+                  </button>
+                  <button
+                     onClick={() => document.dispatchEvent(new CustomEvent('openCustomModal'))}
+                     className="w-full sm:w-auto px-10 py-4.5 rounded-full text-base font-semibold text-neutral border border-primary/20 hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
+                  >
+                     Order Custom Cake
+                  </button>
+               </div>
+            </motion.div>
 
-              {/* Desktop Image - Circular with animated rings */}
-              <motion.div
-                 initial={{ opacity: 0, scale: 0.95 }}
-                 animate={{ opacity: 1, scale: 1 }}
-                 transition={{ duration: 0.8, delay: 0.2 }}
-                 className="relative hidden lg:flex order-1 lg:order-2 justify-center items-center py-10"
-              >
-                 <div className="relative w-80 h-80 xl:w-[28rem] xl:h-[28rem] flex justify-center items-center">
-                    {/* Animated Rings Container */}
-                    <div className="absolute inset-[-2.5rem] rounded-full border-2 border-dashed border-gold/60 animate-[spin_25s_linear_infinite]" />
-                    <div className="absolute inset-[-1.5rem] rounded-full border-[3px] border-b-cocoa/40 border-l-cocoa/40 border-t-transparent border-r-transparent animate-[spin_20s_linear_infinite]" />
-                    <div className="absolute inset-[-0.75rem] rounded-full border-[3px] border-t-blush border-r-blush border-b-transparent border-l-transparent animate-[spin_15s_linear_infinite_reverse]" />
-                    <div className="absolute inset-[-3.5rem] rounded-full border-2 border-r-espresso/20 border-t-transparent border-b-transparent border-l-transparent animate-[spin_30s_linear_infinite_reverse]" />
+            {/* Right Collage */}
+            <motion.div
+               initial={{ opacity: 0, x: 30 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.8, delay: 0.2 }}
+               className="flex-1 w-full lg:w-auto relative"
+            >
+               {/* Concentric Animated Rings */}
+               <div className="absolute inset-0 flex justify-center items-center -z-10 pointer-events-none scale-150 lg:scale-125">
+                  <div className="absolute w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] border border-primary/10 rounded-full animate-spin-slow" />
+                  <div className="absolute w-[350px] h-[350px] lg:w-[600px] lg:h-[600px] border border-secondary/10 rounded-full animate-spin-reverse" />
+                  <div className="absolute w-[400px] h-[400px] lg:w-[700px] lg:h-[700px] border border-primary/5 rounded-full animate-spin-slow" />
+               </div>
 
-                    {/* Main Image */}
-                    <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-8 ring-cream bg-cream-dark z-10">
-                       <img
-                          src="/hero.png"
-                          alt="Signature chocolate cake"
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                       />
-                    </div>
+               <motion.div 
+                  className="grid grid-cols-2 gap-4 lg:gap-6 animate-float"
+               >
+                  {/* Column 1 */}
+                  <div className="space-y-4 lg:space-y-6 pt-12">
+                     <motion.div 
+                        whileHover={{ y: -15, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral/10 aspect-[4/5] bg-soft cursor-pointer group"
+                     >
+                        <img src="/hero/cupcakes.png" alt="Cupcakes" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                     </motion.div>
+                     <motion.div 
+                        whileHover={{ y: -15, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral/10 aspect-[4/3] bg-soft cursor-pointer group"
+                     >
+                        <img src="/hero/truffles.png" alt="Truffles" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                     </motion.div>
+                  </div>
 
-                    {/* Floating badge */}
-                    <div className="absolute -bottom-8 right-0 xl:-right-4 bg-white/95 backdrop-blur p-4 rounded-3xl shadow-xl flex items-center gap-4 animate-bounce z-20" style={{ animationDuration: '3s' }}>
-                       <div className="bg-blush w-12 h-12 rounded-full flex items-center justify-center text-cocoa">
-                          <Utensils size={20} />
-                       </div>
-                       <div>
-                          <p className="text-xs font-semibold text-cocoa uppercase tracking-wider mb-0.5">Order Now</p>
-                          <p className="text-sm font-medium text-espresso">Signature Chocolate Cake</p>
-                       </div>
-                    </div>
-                 </div>
-              </motion.div>
-           </div>
-        </section>
-    );
+                  {/* Column 2 */}
+                  <div className="space-y-4 lg:space-y-6">
+                     <motion.div 
+                        whileHover={{ y: -15, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral/10 aspect-[4/3] bg-soft cursor-pointer group"
+                     >
+                        <img src="/hero/macarons.png" alt="Macarons" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <div className="absolute bottom-4 right-4 bg-secondary w-12 h-12 rounded-full flex items-center justify-center shadow-lg text-neutral animate-bounce group-hover:bg-primary group-hover:text-white transition-colors">
+                           <ShoppingBag size={20} />
+                        </div>
+                     </motion.div>
+                     <motion.div 
+                        whileHover={{ y: -15, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral/10 aspect-[4/5] bg-soft cursor-pointer group"
+                     >
+                        <img src="/hero/cheesecake.png" alt="Cheesecake" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                     </motion.div>
+                  </div>
+               </motion.div>
+            </motion.div>
+         </div>
+      </section>
+   );
 }

@@ -37,25 +37,25 @@ export function MenuSection({ cart, onOpenSizeSelector, updateCartQuantity, show
       <section id="menu" className={`${!showTitle ? 'pt-8' : 'pt-24'} pb-24 px-6 lg:px-12 max-w-7xl mx-auto`}>
          {showTitle && (
             <div className="text-center mb-10">
-               <h2 className="text-4xl lg:text-5xl mb-4 text-espresso">Our Menu</h2>
-               <p className="text-cocoa/70 max-w-2xl mx-auto font-light mb-8">Explore our collection of handcrafted desserts. Everything is baked fresh upon order to guarantee maximum deliciousness.</p>
+               <h2 className="text-4xl lg:text-5xl mb-4 text-neutral">Our Menu</h2>
+               <p className="text-neutral/70 max-w-2xl mx-auto font-light mb-8">Explore our collection of handcrafted desserts. Everything is baked fresh upon order to guarantee maximum deliciousness.</p>
             </div>
          )}
 
          <div className="text-center mb-10">
             <div className="max-w-md mx-auto relative mb-6">
                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                  <Search size={18} className="text-cocoa/50" />
+                  <Search size={18} className="text-neutral/50" />
                </div>
                <input
                   type="text"
                   placeholder="Search cakes, brownies..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full bg-white border border-cocoa/10 rounded-full py-3.5 pl-12 pr-12 text-sm text-espresso placeholder:text-cocoa/40 focus:outline-none focus:border-cocoa/40 shadow-sm transition-colors"
+                  className="w-full bg-white border border-neutral/10 rounded-full py-3.5 pl-12 pr-12 text-sm text-neutral placeholder:text-neutral/40 focus:outline-none focus:border-primary/40 shadow-sm transition-colors"
                />
                {searchQuery && (
-                  <button onClick={() => setSearchQuery("")} className="absolute inset-y-0 right-4 flex items-center text-cocoa/40 hover:text-cocoa">
+                  <button onClick={() => setSearchQuery("")} className="absolute inset-y-0 right-4 flex items-center text-neutral/40 hover:text-neutral">
                      <X size={16} />
                   </button>
                )}
@@ -69,8 +69,8 @@ export function MenuSection({ cart, onOpenSizeSelector, updateCartQuantity, show
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all ${activeCategory === cat
-                        ? 'bg-cocoa text-white shadow-md'
-                        : 'bg-cream-dark text-espresso hover:bg-blush/40'
+                        ? 'bg-primary text-white shadow-md'
+                        : 'bg-soft text-neutral hover:bg-primary/10'
                      }`}
                >
                   {cat}
@@ -119,7 +119,7 @@ export function MenuSection({ cart, onOpenSizeSelector, updateCartQuantity, show
             <div className="mt-8 flex justify-center pb-12">
                <button 
                   onClick={onViewAll} 
-                  className="px-8 py-3.5 rounded-full bg-white border border-cocoa/10 text-espresso font-medium shadow-sm hover:bg-cream transition-colors text-sm"
+                  className="px-8 py-3.5 rounded-full bg-white border border-neutral/10 text-neutral font-medium shadow-sm hover:bg-soft transition-colors text-sm"
                >
                   View Full Menu
                </button>

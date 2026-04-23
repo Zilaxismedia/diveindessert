@@ -8,24 +8,40 @@ interface HeaderProps {
 
 export function Header({ scrolled, onOrder }: HeaderProps) {
     return (
-        <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-cream/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
-           <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                 <img src="/logo.jpg" alt="Dive In Dessert logo" className="h-10 w-10 md:h-12 md:w-12 rounded-full object-cover shadow-md border border-white/40" />
-                 <span className={`font-serif text-2xl font-semibold tracking-tight ${scrolled ? 'text-espresso' : 'text-espresso'} transition-colors`}>
-                    Dive In Dessert
-                 </span>
-              </div>
-              <div className="flex items-center gap-4">
-                 <a href={`https://instagram.com/${INSTAGRAM_HANDLE.replace('@', '')}`} target="_blank" rel="noreferrer" className="text-cocoa hover:text-espresso transition-colors">
-                    <Instagram size={20} />
-                 </a>
-                 <button
-                    onClick={onOrder}
-                    className="hidden md:flex items-center gap-2 bg-espresso text-cream px-6 py-2.5 rounded-full text-sm font-medium hover:bg-cocoa transition-colors"
-                 >
-                    Order Now <MessageCircle size={16} />
-                 </button>
+        <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-6'}`}>
+           <div className={`max-w-7xl mx-auto px-6 lg:px-12 transition-all duration-300 ${scrolled ? 'glass rounded-full mt-2 mx-4 max-w-[calc(100%-2rem)]' : ''}`}>
+              <div className="flex justify-between items-center py-3">
+                  <div className="flex items-center gap-2">
+                     <span className="font-serif text-2xl font-bold italic text-neutral">
+                        Dive In Dessert
+                     </span>
+                  </div>
+
+                  <nav className="hidden lg:flex items-center gap-8">
+                     {[
+                        { name: 'Menu', href: '#menu' },
+                        { name: 'Our Story', href: '#our-story' },
+                        { name: 'Reviews', href: '#reviews' },
+                        { name: 'Contact', href: '#contact' }
+                     ].map((item) => (
+                        <a 
+                           key={item.name} 
+                           href={item.href} 
+                           className={`text-sm font-medium transition-colors ${item.name === 'Menu' ? 'text-neutral border-b-2 border-primary pb-1' : 'text-neutral/60 hover:text-neutral'}`}
+                        >
+                           {item.name}
+                        </a>
+                     ))}
+                  </nav>
+
+                  <div className="flex items-center gap-4">
+                     <button
+                        onClick={onOrder}
+                        className="bg-primary text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-neutral transition-all shadow-lg shadow-primary/20"
+                     >
+                        Order Now
+                     </button>
+                  </div>
               </div>
            </div>
         </header>

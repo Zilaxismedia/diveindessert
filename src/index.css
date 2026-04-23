@@ -1,21 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
+html {
+  scroll-behavior: smooth;
+}
 
-  --color-cream: #fdfbf7;
-  --color-cream-dark: #f5f0e6;
-  --color-espresso: #2c1e16;
-  --color-cocoa: #5a3a31;
-  --color-caramel: #d4a373;
-  --color-blush: #f2d8d5;
-  --color-gold: #d9a05b;
+@theme {
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-serif: "Noto Serif", Georgia, serif;
+
+  --color-primary: #D81B60;
+  --color-secondary: #FFD700;
+  --color-tertiary: #FDFBF7;
+  --color-neutral: #2D2926;
+  --color-soft: #E6E1E5;
+  --color-accent-gold: #8B8B00; /* Darker gold for "Pure Bliss" */
+  
+  /* Mappings for existing project structure */
+  --color-cream: #FDFBF7;
+  --color-cream-dark: #E6E1E5;
+  --color-espresso: #2D2926;
+  --color-cocoa: #4A4440; /* Slightly lighter neutral for "cocoa" */
+  --color-caramel: #FFD700;
+  --color-blush: #D81B60;
+  --color-gold: #FFD700;
 }
 
 body {
-  @apply bg-cream text-espresso font-sans antialiased selection:bg-caramel/30;
+  @apply bg-tertiary text-neutral font-sans antialiased selection:bg-primary/30;
 }
 
 h1,
@@ -42,16 +54,53 @@ h6 {
   scrollbar-width: none;
 }
 
+.glass {
+  @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-xl shadow-neutral/5;
+}
+
+.glass-dark {
+  @apply bg-neutral/80 backdrop-blur-lg border border-white/5 shadow-2xl;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
   }
-
   100% {
     transform: translateX(-100%);
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .animate-marquee {
-  animation: marquee 5s linear infinite;
+  animation: marquee 15s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-slow 25s linear infinite reverse;
 }
